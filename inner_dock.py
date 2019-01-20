@@ -52,7 +52,6 @@ class InnerDock:
     # @QtCore.pyqtSlot(bool)
     def open(self, checked):
         if checked:
-            print('here')
             self.dock.show()
         else:
             self.dock.hide()

@@ -19,11 +19,11 @@ class btn:
             self.b.setMaximumHeight(max_height)
         if txt_color:
             self.b.setStyleSheet(
-                f'''background-color: {color}; color: {txt_color}; 
-                    font-size: {font_size}pt;''')
+                    f'''background-color: {color}; color: {txt_color}; 
+                        font-size: {font_size}pt;''')
         else:
             self.b.setStyleSheet(
-                f'''background-color: {color}; font-size: {font_size}pt''')
+                    f'''background-color: {color}; font-size: {font_size}pt''')
         if tip is not None:
             self.b.setToolTip(tip)
         if toggle:
@@ -33,7 +33,7 @@ class btn:
         if func_conn:
             self.b.clicked.connect(partial(func_conn))
 
-            layout.addWidget(self.b, *pos, *size)
+        layout.addWidget(self.b, *pos, *size)
 
     def set_color(self, color):
         self.b.setStyleSheet(f'background-color: {color}; font-size: 11pt;')

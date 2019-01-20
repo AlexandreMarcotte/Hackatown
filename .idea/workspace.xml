@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f5fb65-e1de-4e00-bd43-1c6d5104b3e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/btn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/date_axis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tab_widget.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tabs/init.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tabs/machine_learning_tab.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tabs/map_tab.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/toolbar_icon/exit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/toolbar_icon/light_mode.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/activation_b.py" beforeDir="false" afterPath="$PROJECT_DIR$/activation_b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors.py" beforeDir="false" afterPath="$PROJECT_DIR$/colors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inner_dock.py" beforeDir="false" afterPath="$PROJECT_DIR$/inner_dock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.~lock.remorquages.csv#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Montreal_Intelligente.py" beforeDir="false" afterPath="$PROJECT_DIR$/Montreal_Intelligente.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/montreal_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/montreal_map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Montreal_Intelligente.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remorquages.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv_data/remorquages.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,45 +21,46 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Hackatown$plot_map.coverage" NAME="plot_map Coverage Results" MODIFIED="1547985398675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hackatown$plot_map.coverage" NAME="plot_map Coverage Results" MODIFIED="1547989423512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="221606884">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="csv#" value="1" />
           <entry key="html" value="1" />
           <entry key="my_map" value="1" />
-          <entry key="py" value="14" />
+          <entry key="py" value="19" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="14" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="52" />
           <entry key="dummy" value="35" />
-          <entry key="py" value="26021" />
+          <entry key="py" value="29103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="35" />
-          <entry key="Python" value="26073" />
+          <entry key="Python" value="29155" />
         </counts>
       </usages-collector>
     </session>
@@ -66,61 +70,52 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Montreal_Intelligente.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+            <state relative-caret-position="204">
+              <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
               <folding>
-                <element signature="e#226#239#0" expanded="true" />
-                <marker date="1547985363742" expanded="true" signature="2024:2028" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="2973:2974" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="2973:2979" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="3012:3021" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="3165:3170" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="3945:3949" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="5291:5295" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="5318:5485" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="5506:5507" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="5734:5840" ph="..." />
-                <marker date="1547985363742" expanded="true" signature="6223:6454" ph="..." />
+                <element signature="e#195#224#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/date_axis.py">
+        <entry file="file://$PROJECT_DIR$/tab_widget.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="221" selection-start-line="221" selection-end-line="221" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/btn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            <state relative-caret-position="204">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#23#83#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/dockarea/DockArea.py">
+        <entry file="file://$PROJECT_DIR$/tabs/init.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tabs/map_tab.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="119" selection-start-line="119" selection-end-line="119" />
+            <state relative-caret-position="1207">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="e#1#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tabs/machine_learning_tab.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-476">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding>
+                <element signature="e#23#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/colors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="274">
               <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
             </state>
           </provider>
@@ -151,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inner_dock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="881">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="323">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
               <folding>
                 <element signature="e#23#45#0" expanded="true" />
               </folding>
@@ -163,11 +158,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activation_b.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
+            <state relative-caret-position="561">
               <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-              <folding>
-                <element signature="e#1#30#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -197,6 +189,10 @@
         <option value="$PROJECT_DIR$/plot_map.py" />
         <option value="$PROJECT_DIR$/Montréal_Intelligente.py" />
         <option value="$PROJECT_DIR$/date_axis.py" />
+        <option value="$PROJECT_DIR$/tabs/init.py" />
+        <option value="$PROJECT_DIR$/tabs/machine_learning_tab.py" />
+        <option value="$PROJECT_DIR$/tab_widget.py" />
+        <option value="$PROJECT_DIR$/tabs/map_tab.py" />
         <option value="$PROJECT_DIR$/Montreal_Intelligente.py" />
       </list>
     </option>
@@ -207,9 +203,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="794" />
     <option name="y" value="27" />
-    <option name="width" value="1047" />
+    <option name="width" value="1126" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -225,6 +222,16 @@
               <item name="Hackatown" type="b2602c69:ProjectViewProjectNode" />
               <item name="Hackatown" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Hackatown" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hackatown" type="462c0819:PsiDirectoryNode" />
+              <item name="tabs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Hackatown" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hackatown" type="462c0819:PsiDirectoryNode" />
+              <item name="toolbar_icon" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -237,6 +244,14 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/toolbar_icon" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -293,10 +308,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="1047" y="27" width="873" height="1053" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2467986" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31318018" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -328,9 +343,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_map" />
     <entry file="file://$PROJECT_DIR$/Volcanoes_USA.txt" />
-    <entry file="file://$PROJECT_DIR$/my_map.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/my_map.html" />
     <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/dockarea/Dock.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -355,47 +368,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/select_file.py">
+    <entry file="file://$PROJECT_DIR$/date_axis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        <state relative-caret-position="34">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activation_b.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-          <folding>
-            <element signature="e#1#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/dockarea/DockArea.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="3604">
           <caret line="221" selection-start-line="221" selection-end-line="221" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inner_dock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="881">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#23#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -409,37 +392,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.local/share/virtualenvs/Hackatown-Picc1_mY/lib/python3.6/site-packages/pyqtgraph/dockarea/DockArea.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.~lock.remorquages.csv#">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activation_b.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/colors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="274">
           <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/date_axis.py">
+    <entry file="file://$PROJECT_DIR$/init.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/select_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        <state relative-caret-position="51">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabs/init.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabs/machine_learning_tab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tab_widget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="e#23#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inner_dock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="e#23#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabs/map_tab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#1#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Montreal_Intelligente.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+        <state relative-caret-position="204">
+          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
           <folding>
-            <element signature="e#226#239#0" expanded="true" />
-            <marker date="1547985363742" expanded="true" signature="2024:2028" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="2973:2974" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="2973:2979" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="3012:3021" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="3165:3170" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="3945:3949" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="5291:5295" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="5318:5485" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="5506:5507" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="5734:5840" ph="..." />
-            <marker date="1547985363742" expanded="true" signature="6223:6454" ph="..." />
+            <element signature="e#195#224#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,5 @@
 # --General Packages--
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt
 import pyqtgraph as pg
 from pyqtgraph.dockarea import *
 from rotated_button import RotatedButton
@@ -9,11 +8,9 @@ from PyQt5 import QtCore, QtGui
 import sys
 import os
 # --My Packages--
-
 from learner import Learner
 # from app.pyqt_frequently_used import select_file
 from stream_console import Stream_console
-
 
 class MachineLearningTab(QWidget):
     def __init__(self):
@@ -54,7 +51,7 @@ class MachineLearningTab(QWidget):
 
     def create_result_dock(self):
         # txt
-        result_dock = Dock('Results')
+        result_dock = Dock('Entrainer le model sur les données')
 
         self.dock_area.addDock(result_dock, 'right')
         result_layout = pg.LayoutWidget()
@@ -96,7 +93,7 @@ class MachineLearningTab(QWidget):
         self.result_txt_edit.insertPlainText(message)
 
     # Put on a new thread
-    def train_learner_cnn(self, ):
+    def train_learner_cnn(self):
         sys.stdout = Stream_console(self.result_txt_edit, self)
         sys.stdout.message.connect(self.write_consol_message_in_txt_edit)
 
@@ -116,41 +113,43 @@ class MachineLearningTab(QWidget):
         plot.plot(hist.history['val_acc'], pen='b', name='results validation')
 
     def create_test_unseen_data_dock(self, result_dock):
-        test_dock = Dock('Test unseen csv_data')
+        test_dock = Dock('Prédire la probabilité de crime')
         self.dock_area.addDock(test_dock, 'bottom', result_dock)
         test_layout = pg.LayoutWidget()
         # Form
         test_form = QGroupBox('')
         f_l = QFormLayout()
-        # Select model
-        select_model_b = QPushButton('Load model path')
-        select_model_edit = QLineEdit('')
-        select_model_b.clicked.connect(
-            partial(self.select_f, edit=select_model_edit, f_extension='.h5',
-                    open=True))
-        f_l.addRow(select_model_b, select_model_edit)
 
+        self.h_edit = QLineEdit('')
+        f_l.addRow(QLabel('Date: '), self.h_edit)
+
+        self.lat_edit = QLineEdit('')
+        f_l.addRow(QLabel('Latitude: '), self.lat_edit)
+
+        self.long_edit = QLineEdit('')
+        f_l.addRow(QLabel('Longitude: '), self.long_edit)
+
+
+        self.long_edit = QLineEdit('')
+        f_l.addRow(QLabel('Jour/Nuit: '), self.long_edit)
+
+        self.long_edit = QLineEdit('')
+        f_l.addRow(QLabel('PDQ: '), self.long_edit)
+
+        f_l.addRow(QLabel(''))
+        f_l.addRow(QLabel(''))
+        f_l.addRow(QPushButton('Évaluer Categorie de crime selon les informations données'))
+        f_l.addRow(QLabel(''))
+        self.crime_type = 'Méfait'
+        f_l.addRow(QLabel(
+                f'''Le type de crime à ces information est de:         -- {self.crime_type} -- '''))
         test_form.setLayout(f_l)
-        test_layout.addWidget(test_form, 0, 0, 1, 2)
-        # Start button
-        start_test_b = QPushButton('Start testing')
-        start_test_b.setMaximumWidth(150)
-        test_layout.addWidget(start_test_b, 0, 2)
-        # Plot
-        unseen_data_plot = pg.PlotWidget()
-        # unseen_data_plot.addItem()
-        test_layout.addWidget(unseen_data_plot, 1, 0, 1, 3)
-        unseen_data_curve = unseen_data_plot.plot()
-        # Slider
-        slider = QSlider(Qt.Horizontal)
-        slider.setTickPosition(QSlider.TicksBelow)
-        slider.setTickInterval(10)
-        slider.setRange(0, 200)
-        test_layout.addWidget(slider, 2, 0, 1, 3)
+        test_layout.addWidget(test_form)
+
         # Connect start testing button
-        start_test_b.clicked.connect(partial(
-                self.test_learner_cnn_on_unseen_data, slider,
-                unseen_data_curve, unseen_data_plot))
+        # start_test_b.clicked.connect(partial(
+        #         self.test_learner_cnn_on_unseen_data, slider,
+        #         unseen_data_curve, unseen_data_plot))
 
         test_dock.addWidget(test_layout)
 
@@ -188,7 +187,7 @@ class MachineLearningTab(QWidget):
         predictions, predictions_proportion = self.learner.predict()
         slider.valueChanged[int].connect(
                 partial(self.plot_sig_and_prediction_class, predictions,
-                    unseen_data_curve, unseen_data_plot))
+                        unseen_data_curve, unseen_data_plot))
         slider.setRange(0, len(self.learner.x_val)-1)
         self.set_signal_to_plot(unseen_data_curve, 0, 'b')
 
@@ -200,15 +199,8 @@ class MachineLearningTab(QWidget):
         tool_dock.addWidget(tool_layout)
 
         tb = QToolBox()
-
         self.create_training_toolbox(tb)
-        self.create_optimizer_toolbox(tb)
-        self.create_neural_network_layer_toolbox(tb)
-
         tool_layout.addWidget(tb, 0, 0)
-
-        add_layer_b = QPushButton('+ Add a layer')
-        tool_layout.addWidget(add_layer_b, 1, 0)
 
         return tool_dock
 
@@ -219,47 +211,12 @@ class MachineLearningTab(QWidget):
         form_gr.setLayout(f_l)
         tb.addItem(form_gr, toolbox_name)
 
-    def create_optimizer_toolbox(self, tb):
-        optimizer_combo = self.init_combo_param(
-                ['SGD', 'Adagrad', 'Adadelta', 'Adam', 'Nadam'])
-
-        self.optimizer_form_dict = {
-                'optimizer combo': optimizer_combo,
-                'activation unit': self.init_combo_param(['relu']),
-                'lr': pg.SpinBox(
-                        value=self.learner.optimizer_params['lr'],
-                        step=0.00001),
-                'beta_1': pg.SpinBox(
-                        value=self.learner.optimizer_params['beta_1'],
-                        step=0.1),
-                'beta_2': pg.SpinBox(
-                        value=self.learner.optimizer_params['beta_2'],
-                        step=0.0001),
-                'epsilon': pg.SpinBox(
-                        value=self.learner.optimizer_params['epsilon'],
-                        step=1e-09),
-                'decay': pg.SpinBox(
-                        value=self.learner.optimizer_params['decay'],
-                        step=0.1)
-                }
-        self.create_toolbox(tb, 'Optimizer', self.optimizer_form_dict)
-
-    def create_neural_network_layer_toolbox(self, tb):
-        self.nn_form_dict = {
-                'n filter': pg.SpinBox(
-                        value=self.learner.n_filters[0], step=1),
-                'n pool': pg.SpinBox(value=self.learner.n_pool, step=1),
-                'n conv': pg.SpinBox(value=self.learner.n_conv[0], step=1),
-                'droupout rate':pg.SpinBox(
-                        value=self.learner.dropout[0], step=0.05)
-                }
-        self.create_toolbox(tb, 'Layer #1', self.nn_form_dict)
-
     def create_training_toolbox(self, tb):
+        model_type_combo = self.init_combo_param(['svm'])
         self.model_form = {
-                'n epoch': self.create_spin_box(
-                        value=self.learner.n_epoch, step=1),
-                'batch size': pg.SpinBox(value=self.learner.batch_size, step=1)
+                'Kernel': model_type_combo,
+                'Gamma': pg.SpinBox(value=self.learner.gamma, step=1),
+                'C': pg.SpinBox(value=self.learner.C, step=1)
                 }
         self.create_toolbox(tb, 'Training', self.model_form)
 

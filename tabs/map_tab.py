@@ -1,10 +1,11 @@
 import os
-import pandas
+import pandas as pd
 import numpy as np
 from pyqtgraph.dockarea import *
 import pyqtgraph as pg
 from date_axis import DateAxis
 import folium
+from folium.plugins import HeatMap
 from PyQt5 import QtWebEngineWidgets, QtCore
 from PyQt5.QtWidgets import *
 from functools import partial
@@ -43,7 +44,6 @@ class MapTabWidget(QWidget):
         self.create_settings_dock()
         # Map
         self.m = self.create_map()
-        # self.add_data_to_map()
         # View
         self.view_dock = InnerDock(
                 self.main_layout, 'Saving', b_pos=(2, 0),
@@ -53,6 +53,13 @@ class MapTabWidget(QWidget):
         self.time_span_dock, self.t_plot = self.create_time_span_dock()
 
         self.setLayout(self.main_layout)
+
+    def create_heat_map(self):
+        self.hm_wide = HeatMap(
+                list(zip(self.lats, self.longs)), min_opacity=0.01,
+                radius=37, blur=95, max_zoom=1)
+        self.m.add_children(self.hm_wide)
+        self.hm_wide.save('heatmap.html')
 
     def create_settings_dock(self):
         settings_dock = InnerDock(
@@ -102,8 +109,8 @@ class MapTabWidget(QWidget):
                 partial(self.change_t_boundaries, t_region))
         t_plot.addItem(t_region, ignoreBounds=True)
         # Add date to
-        dates = np.arange(2) * (3600*24*356)
-        t_plot.plot(x=dates, y=[0, 0], symbol='o')
+        # dates = np.arange(2) * (3600*24*356)
+        # t_plot.plot(x=dates, y=[0, 0], symbol='o')
 
         time_span_dock.layout.addWidget(t_plot)
         return time_span_dock, t_plot
@@ -143,7 +150,9 @@ class MapTabWidget(QWidget):
     def refresh_map(self):
         self.create_map()
         self.add_data_to_map()
-        self.create_view()
+        # Heat map
+        self.create_heat_map()
+        self.create_view(refresh=True)
         try:
             self.time_span_dock.dock.close()
         except AttributeError as e:
@@ -163,14 +172,14 @@ class MapTabWidget(QWidget):
                 cb.addItem(val)
 
     def read_header(self):
-        remorquage_csv = pandas.read_csv(self.csv_path)
-        remorquage_df = pandas.DataFrame(remorquage_csv)
+        remorquage_csv = pd.read_csv(self.csv_path)
+        remorquage_df = pd.DataFrame(remorquage_csv)
         df_vals = remorquage_df.columns.values
         self.create_combobox(df_vals)
 
     def read_data(self):
-        remorquage_csv = pandas.read_csv(self.csv_path)
-        remorquage_df = pandas.DataFrame(remorquage_csv)
+        remorquage_csv = pd.read_csv(self.csv_path)
+        remorquage_df = pd.DataFrame(remorquage_csv)
         self.lats = np.array(
                 remorquage_df[self.lat_str])[
                         self.t_span_left:self.t_span_right]
@@ -187,9 +196,12 @@ class MapTabWidget(QWidget):
                 pass
         self.m.save('mtl_map.html')
 
-    def create_view(self):
+    def create_view(self, refresh=False):
         view = QtWebEngineWidgets.QWebEngineView()
         view.load(QtCore.QUrl().fromLocalFile(
                 os.path.join(self.base_path, 'mtl_map.html')))
+        if refresh == True:
+            view.load(QtCore.QUrl().fromLocalFile(
+                os.path.join(self.base_path, 'heatmap.html')))
         self.view_dock.layout.addWidget(view, 0, 0)
         self.dock_area.addDock(self.view_dock.dock)

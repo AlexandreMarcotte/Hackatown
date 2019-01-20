@@ -10,6 +10,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from time import sleep
 import os
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn import svm, datasets
 
 
 class Learner:
@@ -20,35 +23,34 @@ class Learner:
         # self.load_all_data()
         self.init_cnn_variables()
 
-    # def load_all_data(self):
-    #     self.x_train, self.y_train = self.load_data(
-    #             'x_train.npy', 'y_train.npy')
-    #     self.x_test, self.y_test = self.load_data(
-    #             'x_test.npy', 'y_test.npy')
-    #     self.x_val, self.y_val = self.load_data('x_val.npy', 'y_val.npy')
-    #     self.y_val = to_categorical(self.y_val, num_classes=3)
+    def load_data(csv_path):
+        crime_csv = pd.read_csv(csv_path)
+        crime_df = pd.DataFrame(crime_csv)
+        # df_vals = crime_df.columns.values
+        lats = np.array(crime_df['LATITUDE'])
+        longs = np.array(crime_df['LONGITUDE'])
+        X = np.concatenate(lats, longs, axis=0)
+        enc = LabelEncoder()
+        enc.fit(crime_df['CATEGORIE'])
+        y = enc.transform(crime_df['CATEGORIE'])
+        return X, y
 
-    def load_data(self, x_f_name, y_f_name):
-        # path = os.path.join(os.getcwd(), self.path_till_load_file)
-        # x = np.load(os.path.join(path, x_f_name))
-        # x = x.reshape(-1, *x.shape[-2:])
-        # y= np.load(os.path.join(path, y_f_name))
-        pass
-
-        # return x, y
+    def train_model(X, y):
+        clf = svm.SVC(kernel='rbf', gamma=0.7, C=1.0)
+        models = clf.fit(X, y)
+        return clf
 
     def init_cnn_variables(self):
-        self.n_epoch = 3
-        self.batch_size = 60
-        self.n_filters = [90, 20]
-        self.n_pool = 10
-        self.n_conv = [12, 10]
-        self.dropout = [0.5, 0.5]
-        self.add_second_layout = False
-        self.selected_optimizer = 'Adam'
-        self.optimizer, self.optimizer_params = self.select_optimizer()
-        self.activation_unit = 'relu'
-
+        self.kernel = 'rbf'
+        self.gamma = 0.7
+        self.C = 1.0
+        # self.n_pool = 10
+        # self.n_conv = [12, 10]
+        # self.dropout = [0.5, 0.5]
+        # self.add_second_layout = False
+        # self.selected_optimizer = 'Adam'
+        # self.optimizer, self.optimizer_params = self.select_optimizer()
+        # self.activation_unit = 'relu'
         self.model_name = 'poly3_model.h5'
         self.save_model_path = os.path.join('machine_learning/models/', self.model_name)
         self.load_model_path = os.path.join('machine_learning/models/', self.model_name)

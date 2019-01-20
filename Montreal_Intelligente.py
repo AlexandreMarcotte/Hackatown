@@ -16,7 +16,7 @@ class MainWin(QMainWindow):
     def __init__(self, app):
         super().__init__()
         self.app = app
-        
+
         self.initUI()
         self.setWindowTitle('Montréal Intelligente')
         self.create_toolbar()

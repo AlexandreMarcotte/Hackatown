@@ -13,8 +13,10 @@ from tab_widget import TabWidget
 
 
 class MainWin(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super().__init__()
+        self.app = app
+        
         self.initUI()
         self.setWindowTitle('Montréal Intelligente')
         self.create_toolbar()
@@ -58,5 +60,5 @@ class MainWin(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    main_window = MainWin()
+    main_window = MainWin(app)
     sys.exit(app.exec_())

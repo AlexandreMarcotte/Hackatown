@@ -33,6 +33,8 @@ class MapTabWidget(QWidget):
         self.longs = None
         self.t_span_left = 0
         self.t_span_right = 100
+        self.plot_range_left = 0
+        self.plot_range_right = 400
 
         self.map_path = os.path.join(self.base_path, 'montreal_map.html')
         # Select file
@@ -44,25 +46,25 @@ class MapTabWidget(QWidget):
         # self.add_data_to_map()
         # View
         self.view_dock = InnerDock(
-            self.main_layout, 'Saving', b_pos=(2, 0),
-            toggle_button=False, size=(40, 40))
+                self.main_layout, 'Saving', b_pos=(2, 0),
+                toggle_button=False, size=(40, 40))
         self.create_view()
         # Time span dock
-        self.time_span_dock = self.create_time_span_dock()
+        self.time_span_dock, self.t_plot = self.create_time_span_dock()
 
         self.setLayout(self.main_layout)
 
     def create_settings_dock(self):
         settings_dock = InnerDock(
-            self.main_layout, 'Settings', b_pos=(0, 1),
-            toggle_button=True, size=(1, 1))
+                self.main_layout, 'Settings', b_pos=(0, 1),
+                toggle_button=True, size=(1, 1))
         self.dock_area.addDock(settings_dock.dock)
         # Line edit
         form = QGroupBox('')
         f_l = QFormLayout()
         form.setLayout(f_l)
         df_possible_val = [
-            'Latitude field', 'Longitude field', 'Time field']
+                'Latitude field', 'Longitude field', 'Time field']
         self.df_combobox = [QComboBox() for _ in range(len(df_possible_val))]
         for val, cb in zip(df_possible_val, self.df_combobox):
             f_l.addRow(QLabel(f'{val}: '), cb)
@@ -84,21 +86,24 @@ class MapTabWidget(QWidget):
 
     def create_time_span_dock(self):
         time_span_dock = InnerDock(
-            self.main_layout, 'Time span', b_pos=(0, 2),
-            toggle_button=True, size=(1, 1))
+                self.main_layout, 'Time span', b_pos=(0, 2),
+                toggle_button=True, size=(1, 1))
         self.dock_area.addDock(time_span_dock.dock)
         # Date
         d_axis = DateAxis(orientation='bottom')
         # time plot region
         t_plot = pg.PlotWidget(
-            background=dark_grey, axisItems={'bottom':d_axis})
-        t_plot.setXRange(0, 100)
+                background=dark_grey, axisItems={'bottom':d_axis})
+        t_plot.setXRange(self.plot_range_left, self.plot_range_right)
         t_plot.hideAxis('left')
         # Region
-        t_region = pg.LinearRegionItem([0, 10])
+        t_region = pg.LinearRegionItem([self.t_span_right, self.t_span_left])
         t_region.sigRegionChanged.connect(
-            partial(self.change_t_boundaries, t_region))
+                partial(self.change_t_boundaries, t_region))
         t_plot.addItem(t_region, ignoreBounds=True)
+        # Add date to
+        dates = np.arange(2) * (3600*24*356)
+        t_plot.plot(x=dates, y=[0, 0], symbol='o')
 
         time_span_dock.layout.addWidget(t_plot)
         return time_span_dock, t_plot
@@ -106,8 +111,8 @@ class MapTabWidget(QWidget):
     def create_select_file_form(self):
         # Dock
         opening_dock = InnerDock(
-            self.main_layout, 'Select file', b_pos=(0, 0),
-            toggle_button=True, size=(1, 1))
+                self.main_layout, 'Select file', b_pos=(0, 0),
+                toggle_button=True, size=(1, 1))
         self.dock_area.addDock(opening_dock.dock)
 
         csv_path_edit = QLineEdit('')
@@ -115,15 +120,15 @@ class MapTabWidget(QWidget):
         # Choose map b
         choose_map_file_b = QPushButton('Choose csv data file')
         choose_map_file_b.clicked.connect(
-            partial(self.select_f, csv_path_edit))
+                partial(self.select_f, csv_path_edit))
         # Read csv_data b
         read_header_b = btn(
-            'Read csv data', opening_dock.layout, pos=(0, 2),
-            func_conn=self.read_header, color=map_blue_b, txt_color=white)
+                'Read csv data', opening_dock.layout, pos=(0, 2),
+                func_conn=self.read_header, color=map_blue_b, txt_color=white)
         # Open csv_data b
         add_data_to_map_b = btn(
-            'Add csv data to map', opening_dock.layout, pos=(0, 3),
-            func_conn=self.refresh_map, color=map_blue_b, txt_color=white)
+                'Add csv data to map', opening_dock.layout, pos=(0, 3),
+                func_conn=self.refresh_map, color=map_blue_b, txt_color=white)
         # add_data_to_map_b.clicked.connect( self.refresh_map)
         # Add to layout
         opening_dock.layout.addWidget(choose_map_file_b, 0, 0)
@@ -142,13 +147,13 @@ class MapTabWidget(QWidget):
         try:
             self.time_span_dock.dock.close()
         except AttributeError as e:
-            print(e)
+            print('Error', e)
         self.time_span_dock, self.t_plot = self.create_time_span_dock()
 
     def create_map(self):
         m = folium.Map(
-            location=[45.5088, -73.554], tiles='Stamen Toner', zoom_start=12,
-            control_scale=True)
+                location=[45.5088, -73.554], tiles='Stamen Toner', zoom_start=12,
+                control_scale=True)
         m.save('mtl_map.html')
         return m
 
@@ -166,7 +171,6 @@ class MapTabWidget(QWidget):
     def read_data(self):
         remorquage_csv = pandas.read_csv(self.csv_path)
         remorquage_df = pandas.DataFrame(remorquage_csv)
-        print('left', self.t_span_left, 'right', self.t_span_right)
         self.lats = np.array(
                 remorquage_df[self.lat_str])[
                         self.t_span_left:self.t_span_right]

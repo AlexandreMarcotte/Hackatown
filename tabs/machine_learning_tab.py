@@ -3,29 +3,29 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import pyqtgraph as pg
 from pyqtgraph.dockarea import *
-# from app.rotated_button import RotatedButton
+from rotated_button import RotatedButton
 from functools import partial
 from PyQt5 import QtCore, QtGui
 import sys
 import os
 # --My Packages--
-# from machine_learning.cnn_1D import Learner
+
+from learner import Learner
 # from app.pyqt_frequently_used import select_file
-# from .stream_console import Stream_console
+from stream_console import Stream_console
 
 
 class MachineLearningTab(QWidget):
     def __init__(self):
         super().__init__()
         # self.gv = gv
-
-        # self.learner = Learner()
+        self.learner = Learner()
         self.pg_layout = self.create_tab()
-        # self.tool_dock = self.create_settings_dock()
-        # self.create_open_settings_button()
-        # result_dock, self.training_plot = self.create_result_dock()
-        # self.create_test_unseen_data_dock(result_dock)
-        # self.lr = 0
+        self.tool_dock = self.create_settings_dock()
+        self.create_open_settings_button()
+        result_dock, self.training_plot = self.create_result_dock()
+        self.create_test_unseen_data_dock(result_dock)
+        self.lr = 0
 
     def create_tab(self):
         layout = QHBoxLayout(self)
@@ -37,6 +37,20 @@ class MachineLearningTab(QWidget):
 
         self.setLayout(layout)
         return pg_layout
+
+    def create_open_settings_button(self):
+        # open_settings_dock = Dock('open_settings_button', size=(1, 1))
+        # open_settings_dock.hideTitleBar()
+        # self.dock_area.addDock(open_settings_dock, 'left')
+        # open_settings_layout = pg.LayoutWidget()
+        # open_settings_dock.addWidget(open_settings_layout)
+        # btn
+        b = RotatedButton('Settings', orientation='east')
+        b.setCheckable(True)
+        b.setChecked(True)
+        b.clicked.connect(self.open_toolbox)
+        self.pg_layout.addWidget(b)
+        # open_settings_layout.addWidget(b)
 
     def create_result_dock(self):
         # txt
@@ -141,13 +155,14 @@ class MachineLearningTab(QWidget):
         test_dock.addWidget(test_layout)
 
     def select_f(self, edit, open=True, f_extension='.csv', type='save'):
-        f_name = select_file(
-                self.gv.main_window, open=open, f_extension=f_extension)
-        edit.setText(f_name)
-        if type == 'save':
-            self.learner.save_model_path = f_name
-        elif type == 'load':
-            self.learner.load_model_path = f_name
+        pass
+        # f_name = select_file(
+        #         self.gv.main_window, open=open, f_extension=f_extension)
+        # edit.setText(f_name)
+        # if type == 'save':
+        #     self.learner.save_model_path = f_name
+        # elif type == 'load':
+        #     self.learner.load_model_path = f_name
 
     def plot_sig_and_prediction_class(
                 self, predictions, curve, plot, sig_no):
